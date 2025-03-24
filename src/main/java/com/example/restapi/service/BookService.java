@@ -1,6 +1,6 @@
 package com.example.restapi.service;
 
-import com.example.restapi.model.Book;
+import com.example.restapi.model.Libro;
 import com.example.restapi.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,22 +18,22 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public List<Book> getAllBooks() {
+    public List<Libro> getAllBooks() {
         return bookRepository.findAll();
     }
 
-    public Optional<Book> getBookById(Long id) {
+    public Optional<Libro> getBookById(Long id) {
         return bookRepository.findById(id);
     }
 
-    public Book createBook(Book book) {
+    public Libro createBook(Libro book) {
         return bookRepository.save(book);
     }
 
-    public Book updateBook(Long id, Book bookDetails) {
-        Optional<Book> optionalBook = bookRepository.findById(id);
+    public Libro updateBook(Long id, Libro bookDetails) {
+        Optional<Libro> optionalBook = bookRepository.findById(id);
         if (optionalBook.isPresent()) {
-            Book book = optionalBook.get();
+            Libro book = optionalBook.get();
             book.setTitle(bookDetails.getTitle());
             book.setAuthor(bookDetails.getAuthor());
             return bookRepository.save(book);

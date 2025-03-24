@@ -1,6 +1,6 @@
 package com.example.restapi.controller;
 
-import com.example.restapi.model.Book;
+import com.example.restapi.model.Libro;
 import com.example.restapi.service.BookService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -21,20 +21,20 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping
-    public List<Book> getAllBooks() {
+    public List<Libro> getAllBooks() {
         return bookService.getAllBooks();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable Long id) {
-        Optional<Book> book = bookService.getBookById(id);
+    public ResponseEntity<Libro> getBookById(@PathVariable Long id) {
+        Optional<Libro> book = bookService.getBookById(id);
         return book.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Book> createBook(@RequestBody Book book) {
+    public ResponseEntity<Libro> createBook(@RequestBody Libro book) {
         try {
-            Book createdBook = bookService.createBook(book);
+            Libro createdBook = bookService.createBook(book);
             return ResponseEntity.ok(createdBook);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
@@ -43,9 +43,9 @@ public class BookController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
+    public ResponseEntity<Libro> updateBook(@PathVariable Long id, @RequestBody Libro bookDetails) {
         try {
-            Book updatedBook = bookService.updateBook(id, bookDetails);
+            Libro updatedBook = bookService.updateBook(id, bookDetails);
             return ResponseEntity.ok(updatedBook);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
@@ -54,7 +54,7 @@ public class BookController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
-        Optional<Book> book = bookService.getBookById(id);
+        Optional<Libro> book = bookService.getBookById(id);
         if (book.isPresent()) {
             bookService.deleteBook(id);
             return ResponseEntity.noContent().build();
