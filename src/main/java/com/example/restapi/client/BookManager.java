@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.restapi.model.Book;
+import com.example.restapi.model.Libro;
 
 public class BookManager {
 
@@ -19,7 +19,7 @@ public class BookManager {
         this.restTemplate = new RestTemplate();
     }
 
-    public void registerBook(Book book) {
+    public void registerBook(Libro book) {
         ResponseEntity<Void> response = restTemplate.postForEntity(BOOK_CONTROLLER_URL, book, Void.class);
 
         if (response.getStatusCode().is2xxSuccessful()) {
@@ -29,8 +29,8 @@ public class BookManager {
         }
     }
 
-    public List<Book> getAllBooks() {
-        ResponseEntity<Book[]> response = restTemplate.getForEntity(BOOK_CONTROLLER_URL, Book[].class);
+    public List<Libro> getAllBooks() {
+        ResponseEntity<Libro[]> response = restTemplate.getForEntity(BOOK_CONTROLLER_URL, Libro[].class);
 
         if (response.getStatusCode().is2xxSuccessful()) {
             return List.of(response.getBody());
@@ -78,12 +78,12 @@ public class BookManager {
                     String author = scanner.nextLine();
                     System.out.print("Enter book ISBN: ");
                     String isbn = scanner.nextLine();
-                    Book book = new Book(title, author, isbn);
+                    Libro book = new Libro(title, author, isbn);
                     bookManager.registerBook(book);
                     break;
                 case 2:
-                    List<Book> books = bookManager.getAllBooks();
-                    for (Book b : books) {
+                    List<Libro> books = bookManager.getAllBooks();
+                    for (Libro b : books) {
                         System.out.println("ID: " + b.getId());
                         System.out.println("Title: " + b.getTitle());
                         System.out.println("Author: " + b.getAuthor());
