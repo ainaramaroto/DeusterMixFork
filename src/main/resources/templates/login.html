@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/login.css">
+    <title>Inicio de sesión</title>
+</head>
+<body>
+    <div class="login-container">
+        <form action="/login" method="post">
+            <h2>Inicio de sesión</h2>
+            <div>
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="password">Contraseña:</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" required>
+                    <span class="toggle-password" onclick="togglePassword()">👀</span>
+                </div>
+            </div>
+            <div>
+                <button type="submit">Iniciar Sesión</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const toggleIcon = passwordField.nextElementSibling;
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.textContent = '🙄';
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.textContent = '👀';
+            }
+        }
+    </script>
+</body>
+</html>
