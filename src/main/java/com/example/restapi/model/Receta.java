@@ -1,18 +1,42 @@
 package com.example.restapi.model;
 
+import jakarta.persistence.*;
 import java.util.List;
 
+@Entity
 public class Receta {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, unique = true)
     private Long id;
+
+    @Column(nullable = false)
     private String nombre;
+
+    @Column(nullable = false)
     private String descripcion;
+
+    @ManyToMany
+    @JoinTable(
+        name = "receta_ingrediente",
+        joinColumns = @JoinColumn(name = "receta_id"),
+        inverseJoinColumns = @JoinColumn(name = "ingrediente_id")
+    )
     private List<Ingrediente> ingredientes;
 
-    public Receta(Long id, String nombre, String descripcion, List<Ingrediente> ingredientes) {
+    @ManyToOne
+    @JoinColumn(name = "usuario_dni", nullable = false)
+    private Usuario usuario;
+
+    public Receta() {
+    }
+
+    public Receta(Long id, String nombre, String descripcion, List<Ingrediente> ingredientes, Usuario usuario) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.ingredientes = ingredientes;
+        this.usuario = usuario;
     }
 
     public Long getId() {
@@ -47,6 +71,14 @@ public class Receta {
         this.ingredientes = ingredientes;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     // Método toString
     @Override
     public String toString() {
@@ -55,6 +87,7 @@ public class Receta {
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", ingredientes=" + ingredientes +
+                ", usuario=" + usuario +
                 '}';
     }
 }

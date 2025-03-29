@@ -1,27 +1,39 @@
 package com.example.restapi.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
+    @Id
+    @Column(nullable = false, unique = true)
     private String dni;
+
+    @Column(nullable = false)
     private String nombre;
+
+    @Column(nullable = false)
     private String apellido;
-    private String email;
-    private String telefono;
+
+    @Column(nullable = false, unique = true)
     private String nombreUsuario;
-    private String contrasena;  
-    private String direccion;
+
+    @Column(nullable = false)
+    private String contrasena;
+
+    @Column(nullable = false, unique = true)
+    private String email;
 
     public Usuario() {
     }
 
-    public Usuario(String dni, String nombre, String apellido, String email, String telefono, String nombreUsuario, String contrasena, String direccion) {
+    public Usuario(String dni, String nombre, String apellido, String nombreUsuario, String contrasena, String email) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.email = email;
-        this.telefono = telefono;
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
-        this.direccion = direccion;
+        this.email = email;
     }
 
     public String getDni() {
@@ -48,20 +60,12 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public String getEmail() {
-        return email;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public String getNombreUsuario() {
@@ -72,19 +76,11 @@ public class Usuario {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public String getEmail() {
+        return email;
     }
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public void setEmail(String email) {
+        this.email = email;
     }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }   
 }

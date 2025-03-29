@@ -1,22 +1,30 @@
 package com.example.restapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "books") // Optional: Specify table name explicitly
 public class Libro {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, unique = true)
     private Long id;
+
+    @Column(nullable = false)
     private String titulo;
+
+    @Column(nullable = false)
     private String autor;
+
+    @Column(nullable = false, unique = true)
     private String isbn;
+
+    @ManyToMany
+    @JoinTable(
+        name = "libro_receta",
+        joinColumns = @JoinColumn(name = "libro_id"),
+        inverseJoinColumns = @JoinColumn(name = "receta_id")
+    )
     private List<Receta> recetas;
 
     // No-argument constructor
@@ -24,7 +32,8 @@ public class Libro {
     }
 
     // All-argument constructor (optional, for convenience)
-    public Libro(String titulo, String autor, String isbn, List<Receta> recetas) {
+    public Libro(Long id, String titulo, String autor, String isbn, List<Receta> recetas) {
+        this.id = id;
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
