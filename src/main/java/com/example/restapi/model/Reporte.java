@@ -1,11 +1,29 @@
 package com.example.restapi.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Reporte {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, unique = true)
     private Long id;
+
+    @Column(nullable = false)
     private String nombre;
+
+    @Column(nullable = false)
     private String descripcion;
+
+    @Column(nullable = false)
     private String fecha;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_dni", nullable = false)
     private Usuario usuario;
+
+    public Reporte() {
+    }
 
     // Constructor
     public Reporte(Long id, String nombre, String descripcion, String fecha, Usuario usuario) {

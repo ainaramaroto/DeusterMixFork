@@ -1,15 +1,27 @@
 package com.example.restapi.model;
 
-public class Ingrediente {
-    private Long id;
-    private String nombre;
-    private String cantidad;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-    // Constructor
-    public Ingrediente(Long id, String nombre, String cantidad) {
+@Entity
+public class Ingrediente {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, unique = true)
+    private Long id;
+
+    @Column(nullable = false)
+    private String nombre;
+
+    public Ingrediente() {
+    }
+
+    public Ingrediente(Long id, String nombre) {
         this.id = id;
         this.nombre = nombre;
-        this.cantidad = cantidad;
     }
 
     // Getters y Setters
@@ -29,21 +41,12 @@ public class Ingrediente {
         this.nombre = nombre;
     }
 
-    public String getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(String cantidad) {
-        this.cantidad = cantidad;
-    }
-
     // Método toString
     @Override
     public String toString() {
         return "Ingrediente{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
-                ", cantidad='" + cantidad + '\'' +
                 '}';
     }
 }
