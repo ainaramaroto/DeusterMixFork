@@ -7,6 +7,7 @@ import java.util.List;
 import com.example.restapi.model.Receta;
 import com.example.restapi.model.Ingrediente;
 import com.example.restapi.model.Usuario;
+import com.example.restapi.model.Cliente;
 import com.example.restapi.repository.RecetaRepository;
 
 public class ServiceReceta {
@@ -31,8 +32,8 @@ public class ServiceReceta {
     }
 
     //Obtener la LISTA de recetas de un usuario buscado
-    public List<Receta> obtenerRecetasDeUsuario(Usuario usuario){
-        return repositorioReceta.findByUsuario(usuario);
+    public List<Receta> obtenerRecetasDeUsuario(Cliente cliente){
+        return repositorioReceta.findByUsuario(cliente);
     }
 
     //Obtener UNA receta en específico
@@ -41,17 +42,17 @@ public class ServiceReceta {
     }
 
     //Añadir una receta
-    public void aniadirReceta(Usuario usuario, String nombre, String descripcion, List<Ingrediente> ingredientes) {
+    public void aniadirReceta(Cliente cliente, String nombre, String descripcion, List<Ingrediente> ingredientes) {
         SecureRandom aleatorio = new SecureRandom();
         Receta nuevaReceta = new Receta(aleatorio.nextLong(), nombre, descripcion, ingredientes);
-        usuario.getRecetas().add(nuevaReceta);
+        cliente.getRecetas().add(nuevaReceta);
         repositorioReceta.save(nuevaReceta);
     }
 
     //Eliminar una receta
-    public void eliminarReceta(Usuario usuario, Long id){
+    public void eliminarReceta(Cliente cliente, Long id){
         Receta receta = repositorioReceta.findById(id).get();
-        usuario.getRecetas().remove(receta);
+        cliente.getRecetas().remove(receta);
         repositorioReceta.deleteById(id);
     }   
 }
