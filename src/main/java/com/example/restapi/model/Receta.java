@@ -4,39 +4,28 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "receta")
 public class Receta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true)
     private Long id;
 
-    @Column(nullable = false)
     private String nombre;
-
-    @Column(nullable = false)
     private String descripcion;
-
-    @ManyToMany
-    @JoinTable(
-        name = "receta_ingrediente",
-        joinColumns = @JoinColumn(name = "receta_id"),
-        inverseJoinColumns = @JoinColumn(name = "ingrediente_id")
-    )
     private List<Ingrediente> ingredientes;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_dni", nullable = false)
-    private Usuario usuario;
+
+    private Cliente cliente;
 
     public Receta() {
     }
 
-    public Receta(Long id, String nombre, String descripcion, List<Ingrediente> ingredientes, Usuario usuario) {
+    public Receta(Long id, String nombre, String descripcion, List<Ingrediente> ingredientes, Cliente cliente) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.ingredientes = ingredientes;
-        this.usuario = usuario;
+        this.cliente = cliente;
     }
 
     public Long getId() {
@@ -71,23 +60,13 @@ public class Receta {
         this.ingredientes = ingredientes;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    // Método toString
-    @Override
-    public String toString() {
-        return "Receta{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", ingredientes=" + ingredientes +
-                ", usuario=" + usuario +
-                '}';
-    }
+
 }
