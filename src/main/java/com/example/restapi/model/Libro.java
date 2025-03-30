@@ -4,27 +4,18 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "libro")
 public class Libro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true)
     private Long id;
 
-    @Column(nullable = false)
     private String titulo;
 
-    @Column(nullable = false)
     private String autor;
 
-    @Column(nullable = false, unique = true)
     private String isbn;
 
-    @ManyToMany
-    @JoinTable(
-        name = "libro_receta",
-        joinColumns = @JoinColumn(name = "libro_id"),
-        inverseJoinColumns = @JoinColumn(name = "receta_id")
-    )
     private List<Receta> recetas;
 
     // No-argument constructor

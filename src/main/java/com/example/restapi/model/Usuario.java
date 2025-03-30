@@ -3,28 +3,21 @@ package com.example.restapi.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "usuario")
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "tipo_usuario")
 public class Usuario {
     @Id
-    @Column(nullable = false, unique = true)
     private String dni;
-
-    @Column(nullable = false)
     private String nombre;
-
-    @Column(nullable = false)
     private String apellido;
-
-    @Column(nullable = false, unique = true)
     private String nombreUsuario;
-
-    @Column(nullable = false)
     private String contrasena;
-
-    @Column(nullable = false, unique = true)
     private String email;
+    private boolean sesionActiva;
 
     public Usuario() {
+        this.sesionActiva = false; 
     }
 
     public Usuario(String dni, String nombre, String apellido, String nombreUsuario, String contrasena, String email) {
@@ -34,6 +27,7 @@ public class Usuario {
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
         this.email = email;
+        this.sesionActiva = false; 
     }
 
     public String getDni() {
@@ -83,4 +77,13 @@ public class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public boolean isSesionActiva() {
+        return sesionActiva;
+    }
+
+    public void setSesionActiva(boolean sesionActiva) {
+        this.sesionActiva = sesionActiva;
+    }
+    
 }
