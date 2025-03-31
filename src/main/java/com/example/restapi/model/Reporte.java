@@ -16,7 +16,6 @@ public class Reporte {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-    private Usuario usuario;
 
     public Reporte() {
     }

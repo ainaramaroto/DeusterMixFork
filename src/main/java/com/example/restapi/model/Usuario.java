@@ -18,7 +18,6 @@ public class Usuario {
 
     @Column(nullable = false)
     private String email;
-    private boolean sesionActiva;
 
     @Column(nullable = false)
     private boolean sesionActiva;

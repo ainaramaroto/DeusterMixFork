@@ -70,11 +70,4 @@ public class Receta {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-
 }
