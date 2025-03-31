@@ -10,6 +10,7 @@ public class Libro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String titulo;
 
     @ManyToOne
@@ -17,10 +18,14 @@ public class Libro {
     private Cliente cliente;
 
     @Column(nullable = false)
-    private String autor;
-
     private String isbn;
 
+    @ManyToMany
+    @JoinTable(
+        name = "libro_receta",
+        joinColumns = @JoinColumn(name = "libro_id"),
+        inverseJoinColumns = @JoinColumn(name = "receta_id")
+    )
     private List<Receta> recetas;
 
     // No-argument constructor

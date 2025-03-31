@@ -13,8 +13,10 @@ public class Cliente extends Usuario {
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)    
     private List<Libro> libros;
 
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Reporte> reportes;
 
+    @Column(nullable = false)
     private String direccion;
 
     public Cliente() {
