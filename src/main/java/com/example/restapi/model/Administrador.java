@@ -7,6 +7,12 @@ import java.util.List;
 @Table(name = "administrador")
 public class Administrador extends Usuario {
 
+    @ManyToMany
+    @JoinTable(
+        name = "administrador_reporte",
+        joinColumns = @JoinColumn(name = "administrador_id"),
+        inverseJoinColumns = @JoinColumn(name = "reporte_id")
+    )
     private List<Reporte> reportesRevisados;
 
     public Administrador() {

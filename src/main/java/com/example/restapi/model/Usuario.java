@@ -11,9 +11,16 @@ public class Usuario {
     private String dni;
     private String nombre;
     private String apellido;
+
+    @Column(nullable = false)
     private String nombreUsuario;
     private String contrasena;
+
+    @Column(nullable = false)
     private String email;
+    private boolean sesionActiva;
+
+    @Column(nullable = false)
     private boolean sesionActiva;
 
     public Usuario() {

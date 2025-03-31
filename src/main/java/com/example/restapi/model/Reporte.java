@@ -12,18 +12,22 @@ public class Reporte {
     private String nombre;
     private String descripcion;
     private String fecha;
+    
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
     private Usuario usuario;
 
     public Reporte() {
     }
 
     // Constructor
-    public Reporte(Long id, String nombre, String descripcion, String fecha, Usuario usuario) {
+    public Reporte(Long id, String nombre, String descripcion, String fecha, Cliente cliente) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fecha = fecha;
-        this.usuario = usuario;
+        this.cliente = cliente;
     }
 
     // Getters and Setters
@@ -59,12 +63,12 @@ public class Reporte {
         this.fecha = fecha;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Usuario getCliente() {
+        return cliente;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     // toString method
@@ -75,7 +79,7 @@ public class Reporte {
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", fecha='" + fecha + '\'' +
-                ", usuario=" + usuario +
+                ", cliente=" + cliente +
                 '}';
     }
 }

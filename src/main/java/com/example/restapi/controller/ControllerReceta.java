@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.restapi.model.Cliente;
 import com.example.restapi.model.Ingrediente;
 import com.example.restapi.model.Receta;
-import com.example.restapi.model.Usuario;
 import com.example.restapi.service.ServiceReceta;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -58,20 +58,20 @@ public class ControllerReceta {
     //Añadir una receta
     @PostMapping("/aniadir-receta")
     public ResponseEntity<Receta> aniadirReceta(
-        @RequestParam Usuario usuario, 
+        @RequestParam Cliente cliente, 
         @RequestParam String nombre, 
         @RequestParam String descripcion, 
         @RequestParam List<Ingrediente> ingredientes) {
-        servicioReceta.aniadirReceta(usuario, nombre, descripcion, ingredientes);
+        servicioReceta.aniadirReceta(cliente, nombre, descripcion, ingredientes);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     //Eliminar una receta
     @DeleteMapping("/eliminar-receta")
     public ResponseEntity<Receta> eliminarReceta(
-        @RequestParam Usuario usuario, 
+        @RequestParam Cliente cliente, 
         @RequestParam Long id) {
-        servicioReceta.eliminarReceta(usuario, id);
+        servicioReceta.eliminarReceta(cliente, id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

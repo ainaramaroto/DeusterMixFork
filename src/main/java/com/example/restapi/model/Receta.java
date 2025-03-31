@@ -13,6 +13,9 @@ public class Receta {
     private String nombre;
     private String descripcion;
     private List<Ingrediente> ingredientes;
+    
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
 
 
     private Cliente cliente;
@@ -62,6 +65,11 @@ public class Receta {
 
     public Cliente getCliente() {
         return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
     }
 
     public void setCliente(Cliente cliente) {

@@ -7,6 +7,13 @@ import java.util.List;
 @Table(name = "cliente")
 public class Cliente extends Usuario {
 
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Receta> recetas;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)    
+    private List<Libro> libros;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Receta> recetas;
 
     private List<Libro> libros;

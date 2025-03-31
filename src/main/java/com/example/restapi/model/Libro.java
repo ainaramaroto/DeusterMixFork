@@ -12,6 +12,11 @@ public class Libro {
 
     private String titulo;
 
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private Cliente cliente;
+
+    @Column(nullable = false)
     private String autor;
 
     private String isbn;
@@ -23,10 +28,10 @@ public class Libro {
     }
 
     // All-argument constructor (optional, for convenience)
-    public Libro(Long id, String titulo, String autor, String isbn, List<Receta> recetas) {
+    public Libro(Long id, String titulo, Cliente cliente, String isbn, List<Receta> recetas) {
         this.id = id;
         this.titulo = titulo;
-        this.autor = autor;
+        this.cliente = cliente;
         this.isbn = isbn;
         this.recetas = recetas;
     }
@@ -48,12 +53,12 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    public String getAutor() {
-        return autor;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
+    public void setAutor(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public String getIsbn() {
@@ -78,7 +83,7 @@ public class Libro {
         return "Libro{" +
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
+                ", cliente='" + cliente + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", recetas=" + recetas +
                 '}';

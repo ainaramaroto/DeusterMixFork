@@ -34,27 +34,6 @@ public class ControllerLibro {
         }
     }
 
-    // Endpoint para buscar libros por autor
-    @GetMapping("/autor/{autor}")
-    public ResponseEntity<List<Libro>> buscarPorAutor(@PathVariable String autor) {
-        List<Libro> libros = serviceLibro.buscarPorAutor(autor);
-        return new ResponseEntity<>(libros, HttpStatus.OK);
-    }
-
-    // Endpoint para buscar libros por año de publicación
-    @GetMapping("/anio/{anioPublicacion}")
-    public ResponseEntity<List<Libro>> buscarPorAnioPublicacion(@PathVariable int anioPublicacion) {
-        List<Libro> libros = serviceLibro.buscarPorAnioPublicacion(anioPublicacion);
-        return new ResponseEntity<>(libros, HttpStatus.OK);
-    }
-
-    // Endpoint para buscar libros cuyo título contenga una palabra clave
-    @GetMapping("/buscar")
-    public ResponseEntity<List<Libro>> buscarPorTituloConteniendo(@RequestParam String keyword) {
-        List<Libro> libros = serviceLibro.buscarPorTituloConteniendo(keyword);
-        return new ResponseEntity<>(libros, HttpStatus.OK);
-    }
-
     // Endpoint para guardar un libro
     @PostMapping
     public ResponseEntity<Libro> guardarLibro(@RequestBody Libro libro) {
@@ -66,13 +45,6 @@ public class ControllerLibro {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarPorId(@PathVariable Long id) {
         serviceLibro.eliminarPorId(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
-    // Endpoint para eliminar un libro por título
-    @DeleteMapping("/titulo")
-    public ResponseEntity<Void> eliminarPorTitulo(@RequestParam String titulo) {
-        serviceLibro.eliminarPorTitulo(titulo);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
