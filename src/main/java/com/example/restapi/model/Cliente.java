@@ -14,9 +14,12 @@ public class Cliente extends Usuario {
     private List<Libro> libros;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Receta> recetas;
+
+    private List<Libro> libros;
+
     private List<Reporte> reportes;
 
-    @Column(nullable = false)
     private String direccion;
 
     public Cliente() {

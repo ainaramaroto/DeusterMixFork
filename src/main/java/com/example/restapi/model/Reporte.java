@@ -9,18 +9,14 @@ public class Reporte {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String nombre;
-
-    @Column(nullable = false)
     private String descripcion;
-
-    @Column(nullable = false)
     private String fecha;
     
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+    private Usuario usuario;
 
     public Reporte() {
     }

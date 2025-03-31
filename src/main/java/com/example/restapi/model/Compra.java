@@ -2,6 +2,7 @@ package com.example.restapi.model;
 
 import java.util.List;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -12,6 +13,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
@@ -33,6 +38,8 @@ public class Compra {
     private List<Libro> librosComprados; 
     
     @Enumerated(EnumType.STRING)
+    private String dniCliente; 
+    private List<String> librosComprados;
     private Pago pago; 
 
     public String getDniCliente() { 

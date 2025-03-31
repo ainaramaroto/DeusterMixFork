@@ -10,22 +10,14 @@ public class Receta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String nombre;
-
-    @Column(nullable = false)
     private String descripcion;
-
-    @ManyToMany
-    @JoinTable(
-        name = "receta_ingrediente",
-        joinColumns = @JoinColumn(name = "receta_id"),
-        inverseJoinColumns = @JoinColumn(name = "ingrediente_id")
-    )
     private List<Ingrediente> ingredientes;
     
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
+
+
     private Cliente cliente;
 
     public Receta() {
@@ -78,4 +70,11 @@ public class Receta {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+
 }

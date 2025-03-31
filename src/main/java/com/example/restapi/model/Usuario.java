@@ -9,21 +9,16 @@ import jakarta.persistence.*;
 public class Usuario {
     @Id
     private String dni;
-
-    @Column(nullable = false)
     private String nombre;
-
-    @Column(nullable = false)
     private String apellido;
 
     @Column(nullable = false)
     private String nombreUsuario;
-
-    @Column(nullable = false)
     private String contrasena;
 
     @Column(nullable = false)
     private String email;
+    private boolean sesionActiva;
 
     @Column(nullable = false)
     private boolean sesionActiva;
