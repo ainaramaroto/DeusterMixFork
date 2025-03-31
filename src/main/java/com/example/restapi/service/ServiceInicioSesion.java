@@ -2,6 +2,9 @@ package com.example.restapi.service;
 
 import com.example.restapi.model.Usuario;
 import com.example.restapi.repository.UsuarioRepository;
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,26 +15,26 @@ public class ServiceInicioSesion {
     private UsuarioRepository usuarioRepository;
 
     public boolean login(String email, String contrasenia) {
-        Usuario usuario = usuarioRepository.findByEmail(email);
-        if (usuario != null && usuario.getContrasena().equals(contrasenia)) {
+        Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
+        if (usuario.isPresent() && usuario.get().getContrasena().equals(contrasenia)) {
+            Usuario usuarioActual = usuario.get();
+            usuarioActual.setSesionActiva(true);
+            usuarioRepository.save(usuarioActual);
             return true;
         }
         return false;
     }
 
     public void logout(String email) {
-        Usuario usuario = usuarioRepository.findByEmail(email);
-        if (usuario != null) {
-            usuario.setSesionActiva(false);
-            usuarioRepository.save(usuario);
+        Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
+        if (usuario.isPresent()) {
+            Usuario usuarioActual = usuario.get();
+            usuarioActual.setSesionActiva(false);
+            usuarioRepository.save(usuarioActual);
         }
     }
 
     public Usuario obtenerUsuarioPorEmail(String email) {
-        if (!usuarioRepository.findByEmail(email).isPresent()) {
-            return null;
-        } else {
-            return usuarioRepository.findByEmail(email).get();
-        }
+        return usuarioRepository.findByEmail(email).orElse(null);
     }
 }
