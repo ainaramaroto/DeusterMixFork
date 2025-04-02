@@ -4,23 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuario</title>
-    <link rel="stylesheet" href="../static/registro.css">
 </head>
-<body>
-    <form action="/register" method="post">
-        <h2>Registro de Usuario</h2>
-        <div class="form-row">
-            <div class="form-column">
-                <input type="text" id="dni" name="dni" placeholder="DNI" required>
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-                <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
-                <input type="email" id="email" name="email" placeholder="Email" required>
-                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
-                <input type="text" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de Usuario" required>
-                <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
-                <input type="text" id="direccion" name="direccion" placeholder="Dirección">
-                <input type="submit" value="Registrar" class="button">
-                <a href="inicio.html"><button type="button">Volver</button></a>
+<body style="font-family: 'Comic Sans MS', sans-serif; margin: 0; padding: 0; background-color: transparent; display: flex; flex-direction: column; min-height: 100vh; background-image: url('../static/cerezas.jpg'); background-size: cover; background-repeat: no-repeat; justify-content: center; align-items: center;">
+    <form action="/register" method="post" style="max-width: 1400px; margin: 50px auto; padding: 60px; background-color: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding-top: 0; display: flex; flex-direction: column; align-items: center; border: 2px solid #ff7043;">
+        <h2 style="text-align: center; color: #ff7043; margin-top: 0;">Registro de Usuario</h2>
+        <div class="form-row" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center; justify-content: center;">
+            <div class="form-column" style="width: 100%; display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <input type="text" id="dni" name="dni" placeholder="DNI" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ff7043; border-radius: 5px; background-color: #fff; color: #333; text-align: left; margin-right: 10px;">
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ff7043; border-radius: 5px; background-color: #fff; color: #333; text-align: left; margin-right: 10px;">
+                <input type="text" id="apellido" name="apellido" placeholder="Apellido" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ff7043; border-radius: 5px; background-color: #fff; color: #333; text-align: left; margin-right: 10px;">
+                <input type="email" id="email" name="email" placeholder="Email" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ff7043; border-radius: 5px; background-color: #fff; color: #333; text-align: left; margin-right: 10px;">
+                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ff7043; border-radius: 5px; background-color: #fff; color: #333; text-align: left; margin-right: 10px;">
+                <input type="text" id="nombreUsuario" name="nombreUsuario" placeholder="Nombre de Usuario" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ff7043; border-radius: 5px; background-color: #fff; color: #333; text-align: left; margin-right: 10px;">
+                <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ff7043; border-radius: 5px; background-color: #fff; color: #333; text-align: left; margin-right: 10px;">
+                <input type="text" id="direccion" name="direccion" placeholder="Dirección" style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ff7043; border-radius: 5px; background-color: #fff; color: #333; text-align: left; margin-right: 10px;">
+                <input type="submit" value="Registrar" class="button" style="width: 100%; max-width: 300px; padding: 10px; background-color: #ff7043; border: none; border-radius: 5px; color: #fff; font-size: 16px; cursor: pointer; margin-top: 20px;">
+                <button type="button" onclick="window.location.href='inicio.html'" style="width: 100%; max-width: 300px; padding: 10px; background-color: #ff7043; border: none; border-radius: 5px; color: #fff; font-size: 16px; cursor: pointer; margin-top: 20px;">Volver</button>
             </div>
         </div>
     </form>
