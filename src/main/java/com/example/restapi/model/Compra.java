@@ -28,7 +28,7 @@ public class Compra {
     public Compra() { 
     }
 
-    public Compra(Long id, String dniCliente, List<String> librosComprados, Pago pago) { 
+    public Compra(Long id, String dniCliente, List<Libro> librosComprados, Pago pago) { 
         this.id = id;
         this.dniCliente = dniCliente;
         this.librosComprados = librosComprados;
