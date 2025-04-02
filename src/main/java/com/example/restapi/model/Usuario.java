@@ -11,6 +11,7 @@ import jakarta.persistence.*;
     private Long id;
 
     @Column(nullable = false, unique = true)
+
     private String dni;
 
     @Column(nullable = false)
@@ -25,10 +26,14 @@ import jakarta.persistence.*;
     @Column(nullable = false)
     private String contrasena;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String email;
 
+    @Column(nullable = false)
+    private boolean sesionActiva;
+
     public Usuario() {
+        this.sesionActiva = false; 
     }
 
     public Usuario(String dni, String nombre, String apellido, String nombreUsuario, String contrasena, String email) {
@@ -38,6 +43,7 @@ import jakarta.persistence.*;
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
         this.email = email;
+        this.sesionActiva = false; 
     }
 
     public String getDni() {
@@ -87,4 +93,13 @@ import jakarta.persistence.*;
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public boolean isSesionActiva() {
+        return sesionActiva;
+    }
+
+    public void setSesionActiva(boolean sesionActiva) {
+        this.sesionActiva = sesionActiva;
+    }
+    
 }

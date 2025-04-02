@@ -17,7 +17,7 @@ public class Reporte {
 
     @Column(nullable = false)
     private String fecha;
-
+    
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
@@ -68,6 +68,7 @@ public class Reporte {
     }
 
     public Cliente getCliente() {
+
         return cliente;
     }
 

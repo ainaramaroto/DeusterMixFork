@@ -11,16 +11,17 @@ public class Compra {
     private Long id;
 
     @Column(nullable = false)
-    private String dniCliente; 
-
+    private String dniCliente;
+    
     @ManyToMany
     @JoinTable(
         name = "compra_libro",
         joinColumns = @JoinColumn(name = "compra_id"),
         inverseJoinColumns = @JoinColumn(name = "libro_id")
-    )   
-    private List<String> librosComprados; 
 
+    )
+    private List<Libro> librosComprados; 
+    
     @Enumerated(EnumType.STRING)
     private Pago pago; 
 
@@ -50,11 +51,11 @@ public class Compra {
         this.dniCliente = dniCliente;
     }
 
-    public List<String> getLibrosComprados() { 
+    public List<Libro> getLibrosComprados() { 
         return librosComprados;
     }
 
-    public void setLibrosComprados(List<String> librosComprados) { 
+    public void setLibrosComprados(List<Libro> librosComprados) { 
         this.librosComprados = librosComprados;
     }
 

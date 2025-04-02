@@ -67,6 +67,7 @@ public class Libro {
     }
 
     public void setCliente(Cliente cliente) {
+
         this.cliente = cliente;
     }
 
@@ -100,7 +101,7 @@ public class Libro {
         return "Libro{" +
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
-                ", cliente=" + cliente +
+                ", cliente='" + cliente + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", recetas=" + recetas +
                 ", urlImagen='" + urlImagen + '\'' +

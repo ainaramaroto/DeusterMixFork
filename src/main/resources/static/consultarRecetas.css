@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('../static/fondoVerYFruta.jpg') no-repeat center center fixed; /* Fix the background */
+    background-size: cover;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Add transparency for readability */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px; /* Space between cards */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px; /* Add space between elements */
+}
+
+.search-bar .search-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center; /* Align the icon vertically */
+    justify-content: center;
+}
+
+.search-bar .search-icon {
+    width: 40px; /* Smaller size for the icon */
+    height: 40px;
+}
+
+.search-bar label {
+    font-size: 1.2em;
+    color: #333;
+    white-space: nowrap; /* Prevent label from wrapping */
+    margin: 0; /* Ensure proper alignment */
+}
+
+.search-bar input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar button {
+    padding: 10px;
+    background-color: #ad8c5b;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.search-bar button img {
+    width: 20px;
+    height: 20px;
+}
+
+.search-bar button:hover {
+    transform: scale(1.1); 
+}
+
+.recipe-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative; /* Enable positioning for child elements */
+}
+
+.recipe-card img {
+    width: 55%;
+    height: 200px; /* Set a fixed height for smaller images */
+    object-fit: cover; /* Ensure the image maintains aspect ratio */
+}
+
+.recipe-card .content {
+    padding: 15px;
+    margin-bottom: 40px; /* Add space between the content and the button */
+}
+
+.recipe-card h2 {
+    font-size: 1.5em;
+    margin: 0 0 10px;
+    color: #444;
+}
+
+.recipe-card p {
+    font-size: 1em;
+    color: #666;
+    margin: 20;
+}
+
+.recipe-card a {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding: 10px 15px;
+    background-color: #ad8c5b;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    transition: transform 0.2s ease; /* Add smooth scaling effect */
+}
+
+.recipe-card a:hover {
+    transform: scale(1.1); 
+}

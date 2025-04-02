@@ -2,7 +2,6 @@ package com.example.restapi.model;
 
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name = "ingrediente")
 public class Ingrediente {

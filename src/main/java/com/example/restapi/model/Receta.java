@@ -26,12 +26,10 @@ public class Receta {
         inverseJoinColumns = @JoinColumn(name = "ingrediente_id")
     )
     private List<Ingrediente> ingredientes;
-
+    
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
-
-
 
     public Receta() {
     }
@@ -42,6 +40,7 @@ public class Receta {
         this.ingredientes = ingredientes;
         this.cliente = cliente;
         this.urlImagen = urlImagen;
+
     }
 
 
@@ -104,4 +103,6 @@ public class Receta {
                 ", cliente=" + cliente +
                 '}';
     }
+
+    
 }

@@ -18,6 +18,7 @@ public class Administrador extends Usuario {
     public Administrador() {
         super();
     }
+
     public Administrador(String dni, String nombre, String apellido, String email, String nombreUsuario, String contrasena) {
         super(dni, nombre, apellido, email, nombreUsuario, contrasena);
     }
@@ -27,6 +28,7 @@ public class Administrador extends Usuario {
         super(dni, nombre, apellido, email, nombreUsuario, contrasena);
         this.reportesRevisados = reportesRevisados;
     }
+
 
     public List<Reporte> getReportesRevisados() {
         return reportesRevisados;

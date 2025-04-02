@@ -20,14 +20,19 @@ public class Cliente extends Usuario {
     private String direccion;
 
     public Cliente() {
+        super();
     }
 
     public Cliente(String dni, String nombre, String apellido, String email, String nombreUsuario, String contrasena) {
         super(dni, nombre, apellido, email, nombreUsuario, contrasena);
     }
 
-    public Cliente(String dni, String nombre, String apellido, String nombreUsuario, String contrasena, String email, String direccion) {
-        super(dni, nombre, apellido, nombreUsuario, contrasena, email);
+    public Cliente(String dni, String nombre, String apellido, String email, String nombreUsuario, String contrasena, 
+    List<Receta> recetas, List<Libro> libros, List<Reporte> reportes, String direccion) {
+        super(dni, nombre, apellido, email, nombreUsuario, contrasena);
+        this.recetas = recetas;
+        this.reportes = reportes;
+        this.libros = libros;
         this.direccion = direccion;
     }
 
