@@ -29,7 +29,7 @@ public class Administrador extends Usuario {
         this.reportesRevisados = reportesRevisados;
     }
 
-    // Getter and Setter
+
     public List<Reporte> getReportesRevisados() {
         return reportesRevisados;
     }
@@ -38,7 +38,6 @@ public class Administrador extends Usuario {
         this.reportesRevisados = reportesRevisados;
     }
 
-    // toString method
     @Override
     public String toString() {
         return "Administrador{" +

@@ -4,10 +4,14 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "usuario")
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "tipo_usuario")
-public class Usuario {
+@Inheritance(strategy = InheritanceType.JOINED)public class Usuario {
+    
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true)
+
     private String dni;
 
     @Column(nullable = false)

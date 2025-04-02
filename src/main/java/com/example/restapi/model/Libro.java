@@ -28,17 +28,21 @@ public class Libro {
     )
     private List<Receta> recetas;
 
+    @Column(nullable = false)
+    private String urlImagen;
+
     // No-argument constructor
     public Libro() {
     }
 
     // All-argument constructor (optional, for convenience)
-    public Libro(Long id, String titulo, Cliente cliente, String isbn, List<Receta> recetas) {
+    public Libro(Long id, String titulo, Cliente cliente, String isbn, List<Receta> recetas, String urlImagen) {
         this.id = id;
         this.titulo = titulo;
         this.cliente = cliente;
         this.isbn = isbn;
         this.recetas = recetas;
+        this.urlImagen = urlImagen;
     }
 
     // Getters and setters
@@ -62,7 +66,8 @@ public class Libro {
         return cliente;
     }
 
-    public void setAutor(Cliente cliente) {
+    public void setCliente(Cliente cliente) {
+
         this.cliente = cliente;
     }
 
@@ -82,6 +87,14 @@ public class Libro {
         this.recetas = recetas;
     }
 
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
+    }
+
     // toString method
     @Override
     public String toString() {
@@ -91,6 +104,7 @@ public class Libro {
                 ", cliente='" + cliente + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", recetas=" + recetas +
+                ", urlImagen='" + urlImagen + '\'' +
                 '}';
     }
 }

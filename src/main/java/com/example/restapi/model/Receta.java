@@ -16,6 +16,9 @@ public class Receta {
     @Column(nullable = false)
     private String descripcion;
 
+    @Column(nullable = false)
+    private String urlImagen;
+
     @ManyToMany
     @JoinTable(
         name = "receta_ingrediente",
@@ -31,13 +34,15 @@ public class Receta {
     public Receta() {
     }
 
-    public Receta(Long id, String nombre, String descripcion, List<Ingrediente> ingredientes, Cliente cliente) {
-        this.id = id;
+    public Receta(String nombre, String descripcion, List<Ingrediente> ingredientes, Cliente cliente, String urlImagen) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.ingredientes = ingredientes;
         this.cliente = cliente;
+        this.urlImagen = urlImagen;
+
     }
+
 
     public Long getId() {
         return id;
@@ -78,4 +83,26 @@ public class Receta {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
+    }
+
+    @Override
+    public String toString() {
+        return "Receta{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", urlImagen='" + urlImagen + '\'' +
+                ", ingredientes=" + ingredientes +
+                ", cliente=" + cliente +
+                '}';
+    }
+
+    
 }

@@ -67,7 +67,8 @@ public class Reporte {
         this.fecha = fecha;
     }
 
-    public Usuario getCliente() {
+    public Cliente getCliente() {
+
         return cliente;
     }
 
