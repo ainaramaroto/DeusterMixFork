@@ -4,19 +4,20 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "libro")
 public class Libro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true)
     private Long id;
 
     @Column(nullable = false)
     private String titulo;
 
-    @Column(nullable = false)
-    private String autor;
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private Cliente cliente;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String isbn;
 
     @ManyToMany
@@ -27,17 +28,21 @@ public class Libro {
     )
     private List<Receta> recetas;
 
+    @Column(nullable = false)
+    private String urlImagen;
+
     // No-argument constructor
     public Libro() {
     }
 
     // All-argument constructor (optional, for convenience)
-    public Libro(Long id, String titulo, String autor, String isbn, List<Receta> recetas) {
+    public Libro(Long id, String titulo, Cliente cliente, String isbn, List<Receta> recetas, String urlImagen) {
         this.id = id;
         this.titulo = titulo;
-        this.autor = autor;
+        this.cliente = cliente;
         this.isbn = isbn;
         this.recetas = recetas;
+        this.urlImagen = urlImagen;
     }
 
     // Getters and setters
@@ -57,12 +62,12 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    public String getAutor() {
-        return autor;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public String getIsbn() {
@@ -81,15 +86,24 @@ public class Libro {
         this.recetas = recetas;
     }
 
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
+    }
+
     // toString method
     @Override
     public String toString() {
         return "Libro{" +
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
+                ", cliente=" + cliente +
                 ", isbn='" + isbn + '\'' +
                 ", recetas=" + recetas +
+                ", urlImagen='" + urlImagen + '\'' +
                 '}';
     }
 }

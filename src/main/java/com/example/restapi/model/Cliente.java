@@ -4,21 +4,26 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "cliente")
 public class Cliente extends Usuario {
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Receta> recetas;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)    
     private List<Libro> libros;
 
-    @OneToMany
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Reporte> reportes;
 
     @Column(nullable = false)
     private String direccion;
 
     public Cliente() {
+    }
+
+    public Cliente(String dni, String nombre, String apellido, String email, String nombreUsuario, String contrasena) {
+        super(dni, nombre, apellido, email, nombreUsuario, contrasena);
     }
 
     public Cliente(String dni, String nombre, String apellido, String nombreUsuario, String contrasena, String email, String direccion) {

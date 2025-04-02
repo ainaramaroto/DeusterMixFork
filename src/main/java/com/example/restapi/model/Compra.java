@@ -1,24 +1,47 @@
 package com.example.restapi.model;
 
 import java.util.List;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
+@Entity
+@Table(name = "compra")
 public class Compra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true)
     private Long id;
-    @Column(nullable = false, unique = true)
+
+    @Column(nullable = false)
     private String dniCliente; 
-    @Column(nullable = false, unique = true)
+
+    @ManyToMany
+    @JoinTable(
+        name = "compra_libro",
+        joinColumns = @JoinColumn(name = "compra_id"),
+        inverseJoinColumns = @JoinColumn(name = "libro_id")
+    )   
     private List<String> librosComprados; 
-    @Column(nullable = false, unique = true)
+
+    @Enumerated(EnumType.STRING)
     private Pago pago; 
 
+    public Compra() { 
+    }
+
+    public Compra(Long id, String dniCliente, List<String> librosComprados, Pago pago) { 
+        this.id = id;
+        this.dniCliente = dniCliente;
+        this.librosComprados = librosComprados;
+        this.pago = pago;
+    }
+
+    public Long getId() { 
+        return id;
+    }
+
+    public void setId(Long id) { 
+        this.id = id;
+    }
+    
     public String getDniCliente() { 
         return dniCliente;
     }

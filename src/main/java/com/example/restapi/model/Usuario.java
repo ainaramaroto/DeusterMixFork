@@ -3,9 +3,13 @@ package com.example.restapi.model;
 import jakarta.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Usuario {
+@Table(name = "usuario")
+@Inheritance(strategy = InheritanceType.JOINED)public class Usuario {
+    
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(nullable = false, unique = true)
     private String dni;
 
@@ -15,7 +19,7 @@ public class Usuario {
     @Column(nullable = false)
     private String apellido;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String nombreUsuario;
 
     @Column(nullable = false)

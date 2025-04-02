@@ -4,17 +4,30 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "administrador")
 public class Administrador extends Usuario {
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(
+        name = "administrador_reporte",
+        joinColumns = @JoinColumn(name = "administrador_id"),
+        inverseJoinColumns = @JoinColumn(name = "reporte_id")
+    )
     private List<Reporte> reportesRevisados;
 
-    // Constructor
+    public Administrador() {
+        super();
+    }
     public Administrador(String dni, String nombre, String apellido, String email, String nombreUsuario, String contrasena) {
         super(dni, nombre, apellido, email, nombreUsuario, contrasena);
     }
 
-    // Getter and Setter
+    public Administrador(String dni, String nombre, String apellido, String email, String nombreUsuario, String contrasena,
+                         List<Reporte> reportesRevisados) {
+        super(dni, nombre, apellido, email, nombreUsuario, contrasena);
+        this.reportesRevisados = reportesRevisados;
+    }
+
     public List<Reporte> getReportesRevisados() {
         return reportesRevisados;
     }
@@ -23,7 +36,6 @@ public class Administrador extends Usuario {
         this.reportesRevisados = reportesRevisados;
     }
 
-    // toString method
     @Override
     public String toString() {
         return "Administrador{" +
