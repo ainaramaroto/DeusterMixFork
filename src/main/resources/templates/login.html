@@ -10,13 +10,14 @@
         }
     </style>
 </head>
-<body style="font-family: 'Comic Sans MS', cursive, sans-serif; background-color: #fff8e1; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-image: url('../static/fondoInicio.jpg'); background-size: cover; background-repeat: no-repeat;">
+<body style="font-family: 'Comic Sans MS', cursive, sans-serif; background-color: #fff8e1; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-image: url('https://www.poscosecha.com/foto/19695/Novel%20System%20to%20Assess%20the%20Impacts%20of%20Relative%20Humidity%20on%20Water%20Loss%20During%20Storage%20of%20Blueberries.jpg'); background-size: cover; background-repeat: no-repeat;">
     <div style="display: flex; flex-direction: column; align-items: center;">
-        <form action="/login" method="post" style="background-color: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 300px; border: 2px solid #ff7043; background-repeat: no-repeat; background-position: center top; background-size: 100px 100px;">
+        <div th:if="${token == null}">
+        <form th:action="@{/login(redirectUrl=${redirectUrl})}" method="post" style="background-color: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 300px; border: 2px solid #ff7043; background-repeat: no-repeat; background-position: center top; background-size: 100px 100px;">
             <h2 style="text-align: center; margin-bottom: 20px; color: #ff7043;">Inicio de sesión</h2>
             <div style="margin-bottom: 15px;">
-                <label for="username" style="display: block; margin-bottom: 5px; color: #ff7043;">Usuario:</label>
-                <input type="text" id="username" name="nombreUsuario" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ff7043; border-radius: 4px;">
+                <label for="username" style="display: block; margin-bottom: 5px; color: #ff7043;">Correo:</label>
+                <input type="text" id="email" name="email" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ff7043; border-radius: 4px;">
             </div>
             <div style="margin-bottom: 15px;">
                 <label for="password" style="display: block; margin-bottom: 5px; color: #ff7043;">Contraseña:</label>
@@ -29,9 +30,18 @@
                 <button type="submit" style="width: 100%; padding: 10px; background-color: #ff7043; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Iniciar Sesión</button>
             </div>
             <div>
-                <a href="inicio.html"><button type="button" style="width: 100%; padding: 10px; background-color: #ff7043; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Volver</button></a>
+                <a href="/"><button type="button" style="width: 100%; padding: 10px; background-color: #ff7043; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">Volver</button></a>
             </div>
         </form>
+    </div>
+    <div th:if="${token != null}">
+        <p>¡Bienvenido a DeusterMix!</p>
+        <a href="/principal" class="btn btn-success">Ir al inicio</a>
+    </div>
+
+    <div class="mt-3">
+        <p th:if="${errorMessage}" class="alert alert-danger text-center" th:text="${errorMessage}"></p>
+    </div>
     </div>
     <script>
         function togglePassword() {
